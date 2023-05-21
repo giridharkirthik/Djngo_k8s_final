@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./web/AIESL
+        working-directory: ./web
     strategy:
       max-parallel: 4
       matrix:
