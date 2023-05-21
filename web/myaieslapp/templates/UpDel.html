@@ -1,0 +1,68 @@
+{%extends 'mainpage.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<style>
+     #butt
+            {
+                background-color: green;
+                color: white;
+                height: 30px;
+                width:110px;
+                 }
+                 #but
+            {
+                background-color: red;
+                color: white;
+                height: 30px;
+                width: 70px;
+                 }
+</style>
+{%block content%}
+<div class= "add">
+<body>
+    <table border="3" width= 100% align="centre" >
+        <tr bgcolor=f0f00f>
+            <th>S.No</th>
+            <th>NAME</th>
+            <th>SAP NUMBER</th>
+            <th>DESIGNATION</th>
+            <th>MOBILE NUMBER</th>
+            <th>E-MAIL</th>
+            <th>TRAINED in</th>
+            <th>GRUP</th>
+            <th colspan="2" align= "center">OPERATION</th>
+        </tr>
+        {% for employee in employees %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{ employee.empname }}</td>
+    <td>{{ employee.sap }}</td>
+    <td>{{ employee.designation }}</td>
+    <td>{{ employee.mob }}</td>
+    <td>{{ employee.email }}</td>
+    <td>{{ employee.trained }}</td>
+    <td>{{ employee.grp }}</td>
+    <td bgcolor='green' ><a href="{% url 'EditEmployees' sap=employee.sap %}" onclick='return update()'> <input type='button'  align= "center" value='EDIT / UPDATE' id='butt'></a></td>
+    <td bgcolor='red' ><a href="{% url 'EmpDel' sap=employee.sap %}" onclick="return checkdelete()"> <input type='button' align='center' value='DELETE' id='but'></a></td>
+  {% endfor %}
+    </table>
+    <script>
+                function checkdelete()
+                {
+                    return confirm('ARE YOU SURE TO DELETE THE RECORD?');
+                }
+                
+    </script>
+    <script>
+                function update()
+                {
+                    return confirm('ARE YOU SURE TO UPDATE THE RECORD?');
+                }
+                
+    </script>
+</body>
+</div>
+{%endblock%}
+</html>

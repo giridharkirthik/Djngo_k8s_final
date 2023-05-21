@@ -1,0 +1,97 @@
+{% extends 'mainpage.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  form div{
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #arrival_days:hover, #departure_days:hover {
+    background-color: blue;
+  }
+  .flight-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .flight-info label {
+    margin-bottom: 5px;
+  }
+  .tables-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .table-wrapper {
+    margin-right: 20px;
+  }
+</style>
+
+<div class="add">
+  <a href="menu">
+    <h1>Back</h1>
+  </a>
+  <div class="tables-container">
+    <div class="table-wrapper">
+      <form action="{% url 'Schedule' %}" method="post">
+        {% csrf_token %}
+        <table border="5px" width="100%">
+          <tr>
+            <div>
+              <tr>
+                <td>{{ Arrival_Schedule_form.flight_no_arr.label_tag }}</td>
+                <td>{{ Arrival_Schedule_form.flight_no_arr }}</td>
+              </tr>
+              <tr>
+                <td>{{ Arrival_Schedule_form.sta.label_tag }}</td>
+                <td>{{ Arrival_Schedule_form.sta }}</td>
+              </tr>
+              <div>
+                <tr>
+                  <td>{{ Arrival_Schedule_form.arrival_days.label_tag }}</td>
+                  <td>{{ Arrival_Schedule_form.arrival_days }}</td>
+                </tr>
+              </div>
+              <tr>
+                <td>{{ Arrival_Schedule_form.destination_from.label_tag }}</td>
+                <td>{{ Arrival_Schedule_form.destination_from }}</td>
+              </tr>
+            </div>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="table-wrapper">
+        <table border="5px" width="100%">
+          <tr>
+            <div class="tables-container">
+              <div class="table-wrapper">
+              <tr>
+                <td>{{ Departure_Schedule_form.flight_no_dep.label_tag }}</td>
+                <td>{{ Departure_Schedule_form.flight_no_dep }}</td>
+              </tr>
+              <tr>
+                <tr>
+                  <td>{{ Departure_Schedule_form.std.label_tag }}</td>
+                  <td>{{ Departure_Schedule_form.std }}</td>
+                </tr>
+                <div>
+                  <tr>
+                    <td>{{ Departure_Schedule_form.departure_days.label_tag }}</td>
+                    <td>{{ Departure_Schedule_form.departure_days }}</td>
+                  </tr>
+              </div>
+              <tr>
+                <td>{{ Departure_Schedule_form.destination_to.label_tag }}</td>
+                <td>{{ Departure_Schedule_form.destination_to }}</td>
+              </tr>
+            </div>
+            </td>
+          </tr>
+        </table>
+        <input type= "submit" value= "Schedule">
+      </form>
+
+    </div>
+  </div>
+</div>
+{%endblock%}

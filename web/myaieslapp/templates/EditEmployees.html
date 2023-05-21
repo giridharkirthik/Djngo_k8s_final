@@ -1,0 +1,57 @@
+{% extends 'mainpage.html' %}
+{% block content %}
+<style>
+</style>
+  <div class="add">
+   <form method="POST" action="/UpdateEmployee/{{empEdit.sap}}">
+      {% csrf_token %}
+      <table>
+         <tr>
+            <td>
+               <label style="display: block;">Employee Name:</label>
+               <input name="empname" value="{{ empEdit.empname }}">
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <label style="display: block;">SAP ID:</label>
+               <input name="sap" value="{{ empEdit.sap }}" readonly>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <label style="display: block;">Designation:</label>
+               <input name="designation" value="{{ empEdit.designation }}">
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <label style="display: block;">Mobile no:</label>
+               <input name="mob" value="{{ empEdit.mob }}">
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <label style="display: block;">Email:</label>
+               <input name="email" value="{{ empEdit.email }}">
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <label style="display: block;">Trained in:</label>
+               <input name="trained" value="{{ empEdit.trained }}">
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <label style="display: block;">Group:</label>
+               <input name="grp" value="{{ empEdit.grp }}">
+            </td>
+         </tr>
+         <tr>
+            <td bgcolor='green'><input type='submit' align="center" value='UPDATE' id='butt'></td>
+         </tr>
+      </table>
+   </form>
+  </div>
+{% endblock %}

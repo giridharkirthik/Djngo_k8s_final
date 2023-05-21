@@ -1,0 +1,85 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <div class="add">
+                <table>
+                    <tr>
+                        <td>
+                            <table width="50%" border="1 px solid black">
+                                <thead>
+                                    <tr>
+                                        <th>S. No</th>
+                                        <th>Flight No</th>
+                                        <th>DAYS OF OPERATION</th>
+                                        <th>STA</th>
+                                        <th>Destination From</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for f in TodaysData %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ TodaysData.flight_no_arr }}</td>
+                                            <td>{{ TodaysData.arrival_days }}</td>
+                                            <td>{{ TodaysData.sta }}</td>
+                                            <td>{{ TodaysData.destination_from }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <table width="50%" border="1 px solid black">
+                                <thead>
+                                    <tr>
+                                        <th>S. No</th>
+                                        <th>Flight No</th>
+                                        <th>DAYS OF OPERATION</th>
+                                        <th>STA</th>
+                                        <th>Destination From</th>
+                                        <th>EDIT</th>
+                                        <th>DELETE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for f in TodaysData %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ TodaysData.flight_no_dep }}</td>
+                                            <td>{{ TodaysData.departure_days }}</td>
+                                            <td>{{ TodaysData.std }}</td>
+                                            <td>{{ TodaysData.destination_to }}</td>
+                                            <td bgcolor="green"><a href="#" onclick="return update()"><input type="button" align="center" value="EDIT / UPDATE" id="butt"></a></td>
+                                            <td bgcolor="red"><a href="{% url 'deleteFlight' sta=f.sta %}" onclick="return checkdelete()"><input type="button" align="center" value="DELETE" w="but"></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <table colspan="3" width="100%" bgcolor="green">
+                    <tr>
+                        <td colspan="3">
+                            <center>
+                                <a href="{% url 'Schedule' %}">
+                                    <button type="button">ADD FLIGHT</button>
+                                </a>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </html>
+    {%endblock%}

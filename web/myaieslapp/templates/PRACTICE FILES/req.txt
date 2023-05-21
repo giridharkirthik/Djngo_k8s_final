@@ -1,0 +1,14 @@
+                 empname       sap designation         mob                        email   trained      grp
+0     SHIV SHANKAR KUMAR  88006374  TECHNICIAN  8409278439          ssk96mech@gmail.com  ['A320']  Group 2
+1        PRIYANSHU KUMAR  88006383  TECHNICIAN  9852026374    priyanshurohtas@gmail.com  ['A320']  Group 4
+2           K.S. HARSHIK  88009198  TECHNICIAN  7259968664         harshikvhm@gmail.com  ['A320']  Group 4
+3   ASHWIN GEORGE ANTONY  88007032  TECHNICIAN  9539030209         ashyculguy@gmail.com  ['A320']  Group 1
+4            D MANOPRIYA  88007001  TECHNICIAN  7019011047      manopriya1992@gmail.com  ['A320']  Group 3
+5       AKHIL SASIDHARAN  88006987  TECHNICIAN  9947960737    sasidharanakhil@gmail.com  ['A320']  Group 3
+6           NOUFAL SALIM  88006964  TECHNICIAN  8606243486      noufalsalim07@gmail.com  ['A320']  Group 3
+7       AKHIL S PANKAJAN  88007002  TECHNICIAN  8080525221     akhilpankaj555@gmail.com  ['A320']  Group 2
+8        NIKHIL CHANDRAN  88006989  TECHNICIAN  9567638134  nikhilchandran.sk@gmail.com  ['A320']  Group 2
+9      AJAY RAVICHANDRAN  88007012  TECHNICIAN  9539039231           ajaymndy@gmail.com  ['A320']  Group 1
+
+
+

@@ -1,0 +1,151 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please Login</title>
+    <style>
+        .header{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            position: fixed;
+            background-color:rgb(81, 100, 124);
+        }
+        body{
+            background-color: rgb(249, 250, 251);
+        }
+        #TopItem{
+            color:white;
+        }
+        #mainpageTable{
+            margin-top: -60px;
+            margin-left: 75%;
+        }
+        #Support{
+            margin-bottom: 10px;
+            margin-left: 95%;
+            color: white;
+        }
+        #KnowledgeBase{
+            margin-bottom: 10px;
+            margin-left: 0%;
+            color: white;
+        }
+        #pro{
+            margin-bottom: 10px;
+            margin-left: 60px;
+            color: white;
+        }
+        .content{
+            margin-top: 12%;
+            text-align: center;
+        }   
+        #alltext{
+            font-size: 18px;
+            font-family:'Times New Roman', Times, serif;
+            
+        }
+        footer {
+            font-size: 14px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            }
+button{
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+}
+#login{
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+}
+*{
+  font-family: "Mbot", sans-serif;
+}
+form {
+  background-color:rgb(255, 255, 255);
+  width: 360px;
+  margin: 0 auto; /* add this line to center the form horizontally */
+  text-align: center; /* add this line to center the form elements vertically */
+
+  box-shadow: rgba(97, 97, 97, 0.1) 0px 5px 10px;
+}
+label{
+    font-size: 13px;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <div class="header" id="header">
+
+                <a href="#">
+                    <h1 id= "TopItem">Canopus</h1>
+                </a>
+                <table id="mainpageTable">
+                    <tr>
+                        <td>
+                            <a href="#">
+                                <p id= "KnowledgeBase">KnowledgeBase</p>
+                            </a>
+                        </td>
+                        <td>
+                            <button href="{% url 'mainpage' %}">
+                                Login
+                            </button>
+                        </td>
+                        <table>
+                            </table>
+                        
+
+                </tr>
+                </table>
+
+            </div>
+
+
+        </td>
+    </tr>
+</table>
+
+
+</div>
+            <!-- DIV ENDS HERE -->
+
+            <div class="content">
+                <p id="login">PLEASE LOGIN</p>
+                <form method= "post">
+                    {%csrf_token%}
+                    
+                    <table>
+                        <tr>
+                            <td>{{form}}</td>
+                        </tr>
+                    </table>
+
+                    <input type="submit">
+                </form>
+            </div>
+            </body>
+            </html>
+            

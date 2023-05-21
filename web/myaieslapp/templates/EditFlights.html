@@ -1,0 +1,97 @@
+{% extends 'mainpage.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  form div{
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #arrival_days:hover, #departure_days:hover {
+    background-color: blue;
+  }
+  .flight-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .flight-info label {
+    margin-bottom: 5px;
+  }
+  .tables-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .table-wrapper {
+    margin-right: 20px;
+  }
+</style>
+
+<div class="add">
+  <a href="menu">
+    <h1>Back</h1>
+  </a>
+  <div class="tables-container">
+    <div class="table-wrapper">
+      <form action="{% url 'Schedule' %}" method="post">
+        {% csrf_token %}
+        <table border="5px" width="100%">
+          <tr>
+            <div>
+              <tr>
+                <td>Arrival Flight no: </td>
+                <td><input value= "{{ Edit_Flight_info.flight_no_arr }}"/></td>
+              </tr>
+              <tr>
+                <td>STA:</td>
+                <td><input value= "{{Edit_Flight_info.sta}}"></td>
+              </tr>
+              <div>
+                <tr>
+                  <td>Arrival Days:</td>
+                  <td><input value= "{{Edit_Flight_info.arrival_days}}"></td>
+                </tr>
+              </div>
+              <tr>
+                <td>Destination From</td>
+                <td><input value= "{{Edit_Flight_info.destination_from}}"></td>
+              </tr>
+            </div>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="table-wrapper">
+        <table border="5px" width="100%">
+          <tr>
+            <div class="tables-container">
+              <div class="table-wrapper">
+                <tr>{{Departure_Schedule_form}}
+                  <td>Departure Flight no: </td>
+                  <td><input value= "{{ Edit_Flight_info_dep.flight_no_dep }}"/></td>
+                </tr>
+              <tr>
+                <tr>
+                  <td>STD:</td>
+                  <td><input value= "{{Edit_Flight_info_dep.std}}"></td>
+                </tr>
+                <div>
+                  <tr>
+                    <td>Departure Days:</td>
+                    <td><input value= "{{Edit_Flight_info_dep.departure_days}}"></td>
+                  </tr>
+              </div>
+              <tr>
+                <td>Destination to:</td>
+                <td><input value= "{{Edit_Flight_info_dep.destination_to}}"></td>
+              </tr>
+            </div>
+            </td>
+          </tr>
+        </table>
+        <input type= "submit" value= "Update">
+      </form>
+
+    </div>
+  </div>
+</div>
+{%endblock%}

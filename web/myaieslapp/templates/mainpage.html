@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add this to the head section of your HTML template -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            width: 250px;
+            background-color: #fff;
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+            z-index: 1;
+        }
+    
+        .navbar h1 {
+            color: #222;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+    
+        .navbar a {
+            display: block;
+            color: #222;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+    
+        .navbar a:hover {
+            background-color: #ddd;
+        }
+    
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    
+        .header {
+            height: 100px;
+            width: 100%;
+            background-color: #fff;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 250px;
+        }
+    
+        h1 {
+            margin: 0;
+            padding: 20px;
+            color: #222;
+        }
+    
+        .cs1 {
+            background-color: brown;
+            position: top;
+        }
+    
+        /* New styles for the menu button */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 3;
+        }
+    
+        .menu-btn:hover {
+            color: #1e90ff;
+        }
+    
+        .menu-btn .fas {
+            color: #222;
+        }
+    
+        /* Styles for the menu when it's open */
+        .navbar.active {
+            left: 0;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Menu</h1>
+        <a href="{% url 'mainpage' %}">Home</a>
+        <h1>Roster</h1>
+        <a href="{% url 'add' %}">Add</a>
+        <a href="{% url 'UpDel' %}">Update/Delete</a>
+        <h1>Allocation</h1>
+        <a href="{% url 'Group' %}">Group</a>
+        <a href="{% url 'showFlights' %}">Scheduled Flights</a>
+    </div>
+
+    <div class="header">
+        <h1>AIESL</h1>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- Add this button to your HTML template -->
+<div class="menu-btn" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+</div>
+
+<script>
+    function toggleMenu() {
+        var navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>

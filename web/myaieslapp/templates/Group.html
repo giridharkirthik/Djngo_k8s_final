@@ -1,0 +1,128 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+
+<body>
+   <style>
+      .table1 {
+     border-collapse: collapse;
+     width: 100%;
+  }
+
+  .table1 th, .table1 td {
+     padding: 8px;
+     text-align: center;
+     border-bottom: 1px solid #ff0606;
+  }
+
+  .table1 tr:hover {
+     background-color: #02c6fc;
+  }
+
+  .table1 th {
+     background-color: #0b0053;
+     color: white;
+     border-top: 1px solid #ddd;
+     border-bottom: none;
+  }
+
+  .add {
+     margin: auto;
+     width: 80%;
+     border: 3px solid #1900ff;
+     padding: 10px;
+     margin-top: 20px;
+  }
+  input{
+   border: none;
+   padding: 20px;
+  }
+</style>
+{{ date }}
+{{ date_str }}
+
+   <h1><b>{{ current_time }}</b></h1>
+   <div class="add">
+      <table class="table1">
+         <tr>
+            <td class="table2" align="center"><h1>{{ filter }}</h1></td>
+         </tr>
+         <tr style="color: red; font-weight: bold;">
+            <td colspan="6"><h2>{{ weekday }}</h2></td>
+         </tr>
+         <tr bgcolor="#4CAF50" style="color: white;">
+            <th>NAME</th>
+            <th>SAP NUMBER</th>
+            <th>DESIGNATION</th>
+            <th colspan="3">ATTENDANCE</th>  
+         </tr>
+         {% for i in Fetch_group %}
+         {% if i.grp == filter and attendance_status == "Notsubmitted" %}
+         <tr>
+            <td>
+               {{ i.empname }}
+            </td>
+            <td>
+               {{ i.sap }}
+            </td>
+            <td>
+               {{ i.designation }}
+            </td>
+            <form action="" method="post">
+               {%csrf_token%}
+               <td>
+                  <input type="radio" name="{{i.grp}}_{{i.sap}}" value="present" required> Present
+               </td> 
+               <td>
+                  <input type="radio" name="{{i.grp}}_{{i.sap}}" value="leave" required> Leave
+               </td>
+               <td>
+                  <input type="radio" name="{{i.grp}}_{{i.sap}}" value="absent" required> Absent
+               </td>
+               {% endif %}
+               {% endfor %}
+               {% if attendance_status == "Notsubmitted" %}
+                  <tr><td><input type="submit" value= "SUBMIT"></td></tr>
+                  <tr><td colspan= "2"><b style= "color: red">Attendance not submitted.</b></td></tr>
+                  
+               {% endif %}
+         {% for i in Fetch_group %}
+         {% if i.grp == filter and attendance_status == "Submitted" %}
+         <tr>
+            <td>
+               {{ i.empname }}
+            </td>
+            <td>
+               {{ i.sap }}
+            </td>
+            <td>
+               {{ i.designation }}
+            </td>
+            <form action="/UpdateAttendance/" method="post">
+               {%csrf_token%}
+               <td>
+                  <input type="radio" name="{{i.grp}}_{{i.sap}}" value="present" required> Present
+               </td> 
+               <td>
+                  <input type="radio" name="{{i.grp}}_{{i.sap}}" value="leave" required> Leave
+               </td>
+               <td>
+                  <input type="radio" name="{{i.grp}}_{{i.sap}}" value="absent" required> Absent
+               </td>
+               {% endif %}
+               {% endfor %}
+               {% if attendance_status == "Submitted" %}
+               <tr><td><Button type="submit">UPDATE</Button></td></tr>
+               <tr><td colspan= "2"><b style= "color: green">Attendance Submitted.</b></td></tr>
+               {% endif %}
+            </form>
+         </tr>
+
+      </table>
+      <form method="post" action="{% url 'Group' %}">
+         {% csrf_token %}
+         
+      </form>
+   </div>
+</body>
+{% endblock %}

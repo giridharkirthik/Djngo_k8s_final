@@ -1,0 +1,117 @@
+{% extends 'mainpage.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  form div {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #arrival_days:hover, #departure_days:hover {
+    background-color: navy;
+    color: white;
+  }
+  .flight-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .flight-info label {
+    margin-bottom: 5px;
+    color: navy;
+  }
+  .tables-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .table-wrapper {
+    margin-right: 20px;
+    border: 2px solid rgb(128, 0, 0);
+    padding: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 5px; 
+    border: 0.2px solid rgb(128, 0, 0);
+    color: rgb(0, 0, 0);
+  }
+  input[type=submit] {
+    background-color: navy;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  input[type=submit]:hover {
+    background-color: red;
+  }
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: navy;
+    text-align: center;
+  }
+  input[type="text"], input[type="number"], input[type="email"], textarea {
+    height: 30px;
+    font-size: 20px;
+    font-style: bold;
+    color:rgb(251, 1, 101);
+}
+
+</style>
+
+<div class="add">
+  <a href="{% url 'showFlights' %}">
+    <h1>Back</h1>
+  </a>
+  <div class="tables-container">
+    <div class="table-wrapper">
+      <form action="{% url 'Schedule' %}" method="post">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>Arrival Flight no:</td>
+            <td>{{ Schedule_form.flight_no_arr }}</td>
+          </tr>
+          <tr>
+            <tr>
+              <td>STA:</td>
+              <td>{{ Schedule_form.sta }}</td>
+            </tr>
+            <td>Arrival Days:</td>
+            <td>{{ Schedule_form.arrival_days }}</td>
+          </tr>
+          <tr>
+            <td>Arrival From:</td>
+            <td>{{ Schedule_form.destination_from }}</td>
+          </tr>
+        </table>
+    </div>
+    <div class="table-wrapper">
+        <table>
+          <tr>
+            <td>Departure Flight no:</td>
+            <td>{{ Schedule_form.flight_no_dep }}</td>
+          </tr>
+          <tr>
+            <td>STD:</td>
+            <td>{{ Schedule_form.std }}</td>
+          </tr>
+          <tr>
+            <td>Departure Days:</td>
+            <td>{{ Schedule_form.departure_days }}</td>
+          </tr>
+          <tr>
+            <td>Destination to:</td>
+            <td>{{ Schedule_form.destination_to }}</td>
+          </tr>
+        </table>
+        <input type="submit" value="Update">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
